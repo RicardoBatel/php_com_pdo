@@ -13,7 +13,7 @@
         ';
 
         $stmt = $conexao->query($query);
-        $lista = $stmt->fetchAll();//retorna todos os registros do banco de dados
+        $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);//retorna todos os registros do banco de dados
 
         echo '<pre>';
         print_r($lista);
