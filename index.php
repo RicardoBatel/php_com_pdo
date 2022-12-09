@@ -9,25 +9,15 @@
         $conexao = new PDO($dsn, $usuario, $senha);
 
         $query = '
-            create table if not exists tb_usuarios(
-                id int not null primary key auto_increment,
-                nome varchar(50) not null,
-                email varchar(100) not null,
-                senha varchar(32) not null
-            )
+            select * from tb_usuarios
         ';
 
-        $conexao->exec($query);
+        $stmt = $conexao->query($query);
+        $lista = $stmt->fetchAll();//retorna todos os registros do banco de dados
 
-        $query = '
-            insert into tb_usuarios(
-                nome, email, senha
-            ) values (
-                "Ricardo Batel", "ricardo@teste.com.br", "123456"
-            )
-        ';
-
-        $conexao->exec($query);
+        echo '<pre>';
+        print_r($lista);
+        echo '</pre>';
 
     } catch (PDOException $e) {
        echo 'Erro '.$e->getCode().' Mensagem: '.$e->getMessage();
