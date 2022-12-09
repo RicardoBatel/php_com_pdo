@@ -13,11 +13,13 @@
         ';
 
         $stmt = $conexao->query($query);
-        $lista = $stmt->fetchAll(PDO::FETCH_ASSOC);//retorna todos os registros do banco de dados
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);//retorna todos os registros do banco de dados
 
         echo '<pre>';
-        print_r($lista);
+        print_r($usuario);
         echo '</pre>';
+
+        echo $usuario['nome'];
 
     } catch (PDOException $e) {
        echo 'Erro '.$e->getCode().' Mensagem: '.$e->getMessage();
